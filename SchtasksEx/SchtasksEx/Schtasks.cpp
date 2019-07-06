@@ -790,6 +790,110 @@ auto Schtasks::CreateTaskTriggerIdle(
     return vResult;
 }
 
+auto Schtasks::CreateTaskTriggerBoot(
+    _In_opt_    BSTR aDelay,
+    _In_opt_    BSTR aRepetitionInterval,
+    _In_opt_    BSTR aRepetitionDuration,
+    _In_opt_    BSTR aExecutionTimeLimit,
+    _In_opt_    BSTR aStartBoundary,
+    _In_opt_    BSTR aEndBoundary,
+    _In_opt_    VARIANT_BOOL aStopAtDurationEnd
+) -> HRESULT
+{
+    auto vResult = S_OK;
+
+    for (;;)
+    {
+        auto vTaskTriggerCollection = CComPtr<ITriggerCollection>();
+        vResult = _TaskDef->get_Triggers(&vTaskTriggerCollection);
+        if (FAILED(vResult))
+        {
+            break;
+        }
+
+        auto vTaskTrigger = CComPtr<ITrigger>();
+        vResult = vTaskTriggerCollection->Create(TASK_TRIGGER_BOOT, &vTaskTrigger);
+        if (FAILED(vResult))
+        {
+            break;
+        }
+
+        auto vTaskTriggerBoot = CComPtr<IBootTrigger>();
+        vResult = vTaskTrigger->QueryInterface(IID_IBootTrigger, (void**)& vTaskTriggerBoot);
+        if (FAILED(vResult))
+        {
+            break;
+        }
+
+        auto vTaskRepetition = CComPtr<IRepetitionPattern>();
+        vResult = vTaskTriggerBoot->get_Repetition(&vTaskRepetition);
+        if (FAILED(vResult))
+        {
+            break;
+        }
+
+        if (aRepetitionInterval)
+        {
+            vResult = vTaskRepetition->put_Interval(aRepetitionInterval);
+            if (FAILED(vResult))
+            {
+                break;
+            }
+        }
+        if (aRepetitionDuration)
+        {
+            vResult = vTaskRepetition->put_Duration(aRepetitionDuration);
+            if (FAILED(vResult))
+            {
+                break;
+            }
+        }
+        if (aStopAtDurationEnd)
+        {
+            vResult = vTaskRepetition->put_StopAtDurationEnd(aStopAtDurationEnd);
+            if (FAILED(vResult))
+            {
+                break;
+            }
+        }
+        if (aExecutionTimeLimit)
+        {
+            vResult = vTaskTriggerBoot->put_ExecutionTimeLimit(aExecutionTimeLimit);
+            if (FAILED(vResult))
+            {
+                break;
+            }
+        }
+        if (aStartBoundary)
+        {
+            vResult = vTaskTriggerBoot->put_StartBoundary(aStartBoundary);
+            if (FAILED(vResult))
+            {
+                break;
+            }
+        }
+        if (aEndBoundary)
+        {
+            vResult = vTaskTriggerBoot->put_EndBoundary(aEndBoundary);
+            if (FAILED(vResult))
+            {
+                break;
+            }
+        }
+        if (aDelay)
+        {
+            vResult = vTaskTriggerBoot->put_Delay(aDelay);
+            if (FAILED(vResult))
+            {
+                break;
+            }
+        }
+        break;
+    }
+
+    return vResult;
+}
+
 auto Schtasks::CreateTaskTriggerLogon(
     _In_opt_    BSTR aUserId,
     _In_opt_    BSTR aDelay,

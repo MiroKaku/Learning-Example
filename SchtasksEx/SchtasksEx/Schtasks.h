@@ -143,6 +143,16 @@ public:
         _In_opt_    BSTR aEndBoundary               = nullptr,
         _In_opt_    VARIANT_BOOL aStopAtDurationEnd = VARIANT_FALSE
     )->HRESULT;
+    
+    auto CreateTaskTriggerBoot(
+        _In_opt_    BSTR aDelay                     = nullptr,
+        _In_opt_    BSTR aRepetitionInterval        = nullptr,
+        _In_opt_    BSTR aRepetitionDuration        = nullptr,
+        _In_opt_    BSTR aExecutionTimeLimit        = nullptr,
+        _In_opt_    BSTR aStartBoundary             = nullptr,
+        _In_opt_    BSTR aEndBoundary               = nullptr,
+        _In_opt_    VARIANT_BOOL aStopAtDurationEnd = VARIANT_FALSE
+    )->HRESULT;
 
     auto CreateTaskTriggerLogon(
         _In_opt_    BSTR aUserId,
