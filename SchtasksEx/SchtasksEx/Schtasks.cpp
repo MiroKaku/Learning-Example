@@ -303,16 +303,8 @@ auto Schtasks::ApplyChange() -> HRESULT
 
     for (;;)
     {
-        auto vTaskName      = BSTR();
-        //auto vTaskLogonType = TASK_LOGON_TYPE();
-        //
-        //vResult = GetTaskPrincipal(&vTaskName, nullptr, &vTaskLogonType);
-        //if (FAILED(vResult))
-        //{
-        //    break;
-        //}
-
-        vResult = _Task->get_Name(&vTaskName);
+        auto vTaskName = BSTR();
+        vResult = _Task->get_Path(&vTaskName);
         if (FAILED(vResult))
         {
             break;
