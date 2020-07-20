@@ -1,0 +1,1 @@
+%~dp0\PsExec64.exe -accepteula -s -i -d %~dp0\Privilege.exe
