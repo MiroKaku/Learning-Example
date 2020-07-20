@@ -186,7 +186,7 @@ BOOL ServiceCreateProcessAsPrivilege(
             }
 
             auto vUserTokenGuard = scope_guard(vUserToken,
-                [](HANDLE aUserToken) { CloseHandle(aUserToken); });
+                [](HANDLE aHandle) { CloseHandle(aHandle); });
 
             if (bAdministrator)
             {
@@ -228,6 +228,9 @@ BOOL ServiceCreateProcessAsPrivilege(
             }
             break;
         }
+
+        auto vNewTokenGuard = scope_guard(vNewToken,
+            [](HANDLE aHandle) { CloseHandle(aHandle); });
 
         vResult = ERROR_SUCCESS;
 
