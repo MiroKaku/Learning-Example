@@ -72,7 +72,7 @@ bool IsProcessElevated(HANDLE process) {
     HANDLE process_token = nullptr;
 
     if (!::OpenProcessToken(process, TOKEN_QUERY, &process_token)) {
-        false;
+        return false;
     }
 
     auto process_token_guard = scope_guard(process_token,

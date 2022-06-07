@@ -1,0 +1,4 @@
+[submodule "msgpack.driver/msgpack"]
+	path = msgpack.driver/msgpack
+	url = https://github.com/msgpack/msgpack-c.git
+	branch = cpp_master
