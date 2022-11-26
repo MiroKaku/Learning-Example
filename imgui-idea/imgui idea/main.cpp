@@ -2,8 +2,8 @@
 // If you are new to dear imgui, see examples/README.txt and documentation at the top of imgui.cpp.
 
 #include "imgui.h"
-#include "imgui_impl_dx9.h"
-#include "imgui_impl_win32.h"
+#include "backends/imgui_impl_dx9.h"
+#include "backends/imgui_impl_win32.h"
 #include <d3d9.h>
 #define DIRECTINPUT_VERSION 0x0800
 #include <dinput.h>
@@ -40,7 +40,7 @@ int main(int, char**)
         return 1;
     }
 
-    // Acrylic effects (ÑÇ¿ËÁ¦ÌØÐ§)
+    // Acrylic effects (ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½ï¿½Ð§)
     MARGINS margins = { -1, -1, -1, -1 };
     DwmExtendFrameIntoClientArea(hwnd, &margins);
 
@@ -88,7 +88,7 @@ int main(int, char**)
     bool show_demo_window = false;
     bool show_another_window = false;
 
-    // Transparent (Í¸Ã÷¶È)
+    // Transparent (Í¸ï¿½ï¿½ï¿½ï¿½)
     ImVec4 clear_color = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
 
     // Main loop
@@ -119,7 +119,7 @@ int main(int, char**)
         //    ImGui::ShowDemoWindow(&show_demo_window);
 
         // 2. Show a simple window that we create ourselves. We use a Begin/End pair to created a named window.
-        // Sync Window size (Í¬²½Ô­Éú´°¿Ú´óÐ¡)
+        // Sync Window size (Í¬ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½Ð¡)
         RECT rc = { 0 };
         GetWindowRect(hwnd, &rc);
         ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
@@ -251,47 +251,47 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         GetClientRect(hWnd, &rcClient);
 
         // Resize
-        // Top left corner (×óÉÏ½Ç)
+        // Top left corner (ï¿½ï¿½ï¿½Ï½ï¿½)
         if (pt.x < rcClient.left + BORDERWIDTH && pt.y < rcClient.top + BORDERWIDTH)
         {
             return HTTOPLEFT;
         }
-        // Top right corner (ÓÒÉÏ½Ç)
+        // Top right corner (ï¿½ï¿½ï¿½Ï½ï¿½)
         else if (pt.x > rcClient.right - BORDERWIDTH && pt.y < rcClient.top + BORDERWIDTH)
         {
             return HTTOPRIGHT;
         }
-        // Bottom left corner (×óÏÂ½Ç)
+        // Bottom left corner (ï¿½ï¿½ï¿½Â½ï¿½)
         else if (pt.x < rcClient.left + BORDERWIDTH && pt.y > rcClient.bottom - BORDERWIDTH)
         {
             return HTBOTTOMLEFT;
         }
-        // Bottom right corner (ÓÒÏÂ½Ç)
+        // Bottom right corner (ï¿½ï¿½ï¿½Â½ï¿½)
         else if (pt.x > (rcClient.right - 10 - BORDERWIDTH) && pt.y > (rcClient.bottom - 10 - BORDERWIDTH))
         {
             return HTBOTTOMRIGHT;
         }
-        // Left border (×ó±ß)
+        // Left border (ï¿½ï¿½ï¿½)
         else if (pt.x < rcClient.left + BORDERWIDTH)
         {
             return HTLEFT;
         }
-        // Right border (ÓÒ±ß)
+        // Right border (ï¿½Ò±ï¿½)
         else if (pt.x > rcClient.right - BORDERWIDTH)
         {
             return HTRIGHT;
         }
-        // Top border (ÉÏ±ß)
+        // Top border (ï¿½Ï±ï¿½)
         else if (pt.y < rcClient.top + BORDERWIDTH)
         {
             return HTTOP;
         }
-        // Bottom border (ÏÂ±ß)
+        // Bottom border (ï¿½Â±ï¿½)
         else if (pt.y > rcClient.bottom - BORDERWIDTH)
         {
             return HTBOTTOM;
         }
-        // Title (±êÌâÀ¸)
+        // Title (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
         else if (pt.y < (15 + BORDERWIDTH) && pt.x < (rcClient.right - 15 - BORDERWIDTH))
         {
             return HTCAPTION;

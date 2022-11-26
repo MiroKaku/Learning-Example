@@ -12,17 +12,14 @@
     <Filter Include="imgui">
       <UniqueIdentifier>{a93b5b02-fd83-4e11-994f-5be228a75b18}</UniqueIdentifier>
     </Filter>
-    <Filter Include="imgui\examples">
-      <UniqueIdentifier>{899b8666-fca4-4d10-b807-6b297460cde2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="imgui\examples\win32_directx9">
-      <UniqueIdentifier>{93400522-59a7-4c78-b204-634ce8ee37db}</UniqueIdentifier>
-    </Filter>
     <Filter Include="imgui\misc">
       <UniqueIdentifier>{0194a5d2-7c4c-4d62-a047-d273ce607209}</UniqueIdentifier>
     </Filter>
     <Filter Include="imgui\misc\natives">
       <UniqueIdentifier>{101bd051-e107-43f9-bb07-03cf26aebb90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imgui\backends">
+      <UniqueIdentifier>{899b8666-fca4-4d10-b807-6b297460cde2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -41,11 +38,14 @@
     <ClCompile Include="..\imgui\imgui_widgets.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
-    <ClCompile Include="..\imgui\examples\imgui_impl_dx9.cpp">
-      <Filter>imgui\examples\win32_directx9</Filter>
+    <ClCompile Include="..\imgui\backends\imgui_impl_win32.cpp">
+      <Filter>imgui\backends</Filter>
     </ClCompile>
-    <ClCompile Include="..\imgui\examples\imgui_impl_win32.cpp">
-      <Filter>imgui\examples</Filter>
+    <ClCompile Include="..\imgui\backends\imgui_impl_dx9.cpp">
+      <Filter>imgui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui\imgui_tables.cpp">
+      <Filter>imgui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -58,15 +58,24 @@
     <ClInclude Include="..\imgui\imgui_internal.h">
       <Filter>imgui</Filter>
     </ClInclude>
-    <ClInclude Include="..\imgui\examples\imgui_impl_dx9.h">
-      <Filter>imgui\examples\win32_directx9</Filter>
+    <ClInclude Include="..\imgui\backends\imgui_impl_win32.h">
+      <Filter>imgui\backends</Filter>
     </ClInclude>
-    <ClInclude Include="..\imgui\examples\imgui_impl_win32.h">
-      <Filter>imgui\examples</Filter>
+    <ClInclude Include="..\imgui\backends\imgui_impl_dx9.h">
+      <Filter>imgui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui\imstb_rectpack.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui\imstb_textedit.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui\imstb_truetype.h">
+      <Filter>imgui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Natvis Include="..\imgui\misc\natvis\imgui.natvis">
+    <Natvis Include="..\imgui\misc\debuggers\imgui.natvis">
       <Filter>imgui\misc\natives</Filter>
     </Natvis>
   </ItemGroup>

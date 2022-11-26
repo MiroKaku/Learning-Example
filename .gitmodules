@@ -2,3 +2,6 @@
 	path = msgpack.driver/msgpack
 	url = https://github.com/msgpack/msgpack-c.git
 	branch = cpp_master
+[submodule "imgui-idea/imgui"]
+	path = imgui-idea/imgui
+	url = https://github.com/ocornut/imgui.git
